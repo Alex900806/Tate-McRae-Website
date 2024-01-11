@@ -1,0 +1,233 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Rubik Doodle Shadow", system-ui;
+  scroll-behavior: smooth;
+}
+
+// 首頁
+main {
+  height: 100vh;
+  background-image: url("/picture/bkg.webp");
+  background-position: center;
+  background-size: 92%;
+
+  div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem 1.5rem;
+    /* === removing default button style ===*/
+    .button {
+      margin: 0;
+      height: auto;
+      background: transparent;
+      padding: 0;
+      border: none;
+
+      /* button styling */
+      & {
+        --border-right: 6px;
+        --text-stroke-color: rgba(201, 187, 187, 0.6);
+        --animation-color: #8806df;
+        --fs-size: 3.5rem;
+        letter-spacing: 3px;
+        text-decoration: none;
+        font-size: var(--fs-size);
+        font-family: "Arial";
+        position: relative;
+        text-transform: uppercase;
+        color: transparent;
+        -webkit-text-stroke: 1px var(--text-stroke-color);
+      }
+
+      /* this is the text, when you hover on the button */
+      .hover-text {
+        position: absolute;
+        box-sizing: border-box;
+        content: attr(data-text);
+        color: var(--animation-color);
+        width: 0%;
+        inset: 0;
+        border-right: var(--border-right) solid var(--animation-color);
+        overflow: hidden;
+        transition: 0.5s;
+        -webkit-text-stroke: 1px var(--animation-color);
+      }
+
+      /* hover */
+      &:hover {
+        .hover-text {
+          width: 100%;
+          filter: drop-shadow(0 0 23px var(--animation-color));
+        }
+      }
+    }
+    nav {
+      ul {
+        display: flex;
+        list-style-type: none;
+
+        li {
+          padding: 1rem;
+
+          a {
+            color: rgb(211, 167, 221);
+            text-decoration: none;
+            font-size: 1.6rem;
+            letter-spacing: 0.1rem;
+            position: relative;
+            text-decoration-skip-ink: auto; /* 控制下劃線距離 */
+
+            &:before {
+              content: "";
+              position: absolute;
+              width: 0;
+              height: 2px;
+              bottom: -4px; /* 調整下劃線的位置 */
+              left: 0;
+              background-color: #8806df;
+              transition: width 0.3s ease;
+            }
+
+            &:hover {
+              color: #8806df;
+
+              &:before {
+                width: 100%;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+//第三頁
+section.tour {
+  height: 100vh;
+  background-image: url("/picture/tour.jpeg");
+  background-position: center;
+  background-size: cover;
+  z-index: 1;
+  div.filter {
+    width: 100%;
+    height: 100vh;
+    background-color: black;
+    opacity: 0.2;
+    z-index: 2;
+    .cssbuttons-io {
+      position: absolute;
+      bottom: 510px;
+      right: 30px;
+      font-family: inherit;
+      font-weight: bolder;
+      font-size: 2rem;
+      letter-spacing: 0.05em;
+      border-radius: 0.8em;
+      cursor: pointer;
+      border: none;
+      background: linear-gradient(to right, #8e2de2, #4a00e0);
+      color: azure;
+      overflow: hidden;
+      z-index: 3;
+
+      span {
+        position: relative;
+        z-index: 10;
+        transition: color 0.4s;
+        display: inline-flex;
+        align-items: center;
+        padding: 0.8em 1.2em 0.8em 1.05em;
+      }
+
+      &::before,
+      &::after {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+      }
+
+      &::before {
+        content: "";
+        background: #000;
+        width: 120%;
+        left: -10%;
+        transform: skew(30deg);
+        transition: transform 0.4s cubic-bezier(0.3, 1, 0.8, 1);
+      }
+
+      &:hover::before {
+        transform: translate3d(100%, 0, 0);
+      }
+
+      &:active {
+        transform: scale(0.95);
+      }
+    }
+  }
+}
+
+//第四頁
+section.about {
+  height: 60vh;
+  background-image: url("/picture/about.webp");
+  background-position: top;
+  background-size: cover;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  div {
+    margin-right: 3rem;
+    .Btn {
+      width: 5.5rem;
+      height: 5.5rem;
+      // display: flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      background-color: transparent;
+      position: relative;
+      border-radius: 7px;
+      cursor: pointer;
+      transition: all 0.3s;
+
+      .svgContainer {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: transparent;
+        backdrop-filter: blur(4px);
+        letter-spacing: 0.8px;
+        border-radius: 10px;
+        transition: all 0.3s;
+        border: 1px solid rgba(156, 156, 156, 0.466);
+      }
+      &:hover {
+        .svgContainer {
+          background-color: rgb(36, 29, 33);
+        }
+      }
+    }
+  }
+}
+
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #000;
+  div {
+    font-size: 1.2rem;
+    letter-spacing: 3px;
+    color: aliceblue;
+  }
+}
